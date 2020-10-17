@@ -1,0 +1,58 @@
+{
+  "users": [
+    {
+      "name": "Karla Tovar",
+      "ci": "22324234",
+      "birthday": "ejsfejsfes",
+      "email": "ricardo@gmail.com",
+      "phone": "214234234",
+      "organization": "adawa",
+      "id": 2
+    },
+    {
+      "name": "Angel Navarro",
+      "ci": "1732932123",
+      "birthday": "2020-10-17",
+      "email": "angel@email.com",
+      "phone": "213423424",
+      "organization": "1",
+      "id": 4
+    },
+    {
+      "name": "Angelica Quero",
+      "ci": "21123456",
+      "birthday": "1994-06-06",
+      "email": "angelicaquero@email.com",
+      "phone": "21332312",
+      "organization": "3",
+      "id": 5
+    },
+    {
+      "name": "Carmen",
+      "ci": "53243242",
+      "birthday": "2020-09-29",
+      "email": "carmen@gmail.com",
+      "phone": "32423424",
+      "organization": "2",
+      "id": 6
+    }
+  ],
+  "organizations": [
+    {
+      "id": 1,
+      "name": "Organización 1"
+    },
+    {
+      "id": 2,
+      "name": "Organización 2"
+    },
+    {
+      "id": 3,
+      "name": "Organización 3"
+    },
+    {
+      "id": 4,
+      "name": "Organización 4"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+<div class="container-form bg-white mt-5">
+    <app-title [title]='title'></app-title>
+    <app-user-form
+        [userForm]="userForm"
+        (handleEvent)="save($event)"
+        [organizations]="organizations"
+    ></app-user-form>
+</div>

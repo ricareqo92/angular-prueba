@@ -1,0 +1,10 @@
+.container-form {
+    width: 70%;
+    padding: 10%;
+    box-shadow: 1 1 1 lightgray;
+    box-shadow: 5px 6px 16px 0px #c4c2c4;
+}
+
+.error-msg {
+    color: #f44336;
+}
