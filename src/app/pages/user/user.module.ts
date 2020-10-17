@@ -1,8 +1,14 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import {
+  NgxNotifierModule,
+  NgxNotifierService
+} from 'ngx-notifier';
 
 import { UserRoutingModule } from './user-routing.module';
+
+// COMPONENTES
 import { UserListComponent } from './user-list/user-list.component';
 import { UserCreateComponent } from './user-create/user-create.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
@@ -28,6 +34,10 @@ import { ModalDeleteComponent } from 'src/app/components/modal-delete/modal-dele
     CommonModule,
     UserRoutingModule,
     ReactiveFormsModule,
+    NgxNotifierModule,
+  ],
+  providers: [
+    NgxNotifierService
   ],
   schemas:  [CUSTOM_ELEMENTS_SCHEMA],
 

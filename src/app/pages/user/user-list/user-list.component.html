@@ -26,29 +26,29 @@
             {{user.phone}}
         </td>
         <td>
-            <span (click)="redirecTo(user.id)" class="badge badge-success mr-2 p-2"><i class="fa fa-edit mr-2"></i>Editar </span>
-            <span (click)="activeModal(user.id, user.name)" class="badge badge-danger mr-2 p-2"><i class="fa fa-trash mr-2"></i>Borrar </span>
+            <button [routerLink]="['/user/edit/', user.id]" class="btn btn-sm btn-success mr-2"><i class="fa fa-edit mr-2"></i>Editar </button>
+            <button (click)="activeModal(user.id, user.name)" class="btn btn-sm btn-danger mr-2"><i class="fa fa-trash mr-2"></i>Borrar </button>
             <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" [attr.data-target]="'#modal'+user.id">Borrar</button>
-                    <!-- Modal -->
+            <a data-toggle="modal" [attr.data-target]="'#modal' + user.id" class="btn btn-danger mr-2">Borrar</a> 
+        
+            <!-- Modal -->
                     <div id="{{'modal'+user.id}}" class="modal fade" role="dialog">
-                    <div class="modal-dialog">
-
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">¿Estas seguro de querer borrar este tema?</h4>
+                        <div class="modal-dialog">
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">¿Estas seguro de querer borrar este tema?</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Vas a borrar el tema para siempre...</p>
+                            </div>
+                            <div class="modal-footer">
+                                <a (click)="deleteTopic(topic._id)" class="btn btn-danger" type="button" data-dismiss="modal">Borrar</a>&nbsp; 
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                            </div>
                         </div>
-                        <div class="modal-body">
-                            <p>Vas a borrar el tema para siempre...</p>
-                        </div>
-                        <div class="modal-footer">
-                            <a (click)="deleteTopic(topic._id)" class="btn btn-danger" type="button" data-dismiss="modal">Borrar</a>&nbsp; 
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                        </div>
-
-                    </div>
                     </div>
             <!--<button (click)="redirecTo(user.id)" class="btn btn-success mr-2"><i class="fa fa-edit mr-2"></i>Editar</button>
             <button class="btn btn-danger mr-2"><i class="fa fa-trash mr-2"></i>Borrar</button>-->

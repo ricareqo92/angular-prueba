@@ -5,6 +5,8 @@
         (handleEvent)="save($event)"
         [organizations]="organizations"
     ></app-user-form>
+    <app-ngx-notifier></app-ngx-notifier>
+
     <!--<form [formGroup]="userForm" action="">
         <div class="form-group">
             <input type="text" placeholder="Nombre Completo" class="form-control" [ngClass]="{'is-valid': userForm.get('name').valid}" formControlName="name">

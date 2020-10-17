@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user/user.service';
 import { OrganizationService } from 'src/app/services/organization/organization.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Route } from '@angular/compiler/src/core';
+import { NgxNotifierService } from 'ngx-notifier';
 
 @Component({
   selector: 'app-user-edit',
@@ -22,6 +22,8 @@ export class UserEditComponent implements OnInit {
     private userService: UserService,
     private orgService: OrganizationService,
     private route: ActivatedRoute,
+    private router: Router,
+    private ngxNotifierService: NgxNotifierService,
   ) {
     this.title = 'Editar Usuario';
   }
@@ -40,16 +42,15 @@ export class UserEditComponent implements OnInit {
   }
 
   getUser() {
-    // Sacar el id post de la url
+    // Sacar el id del user de la url
     this.route.params.subscribe(
       params => {
         this.id = +params['id'];
 
-        // Petición ajax para sacar los datos del usuario
+        // Petición para sacar los datos del usuario
         this.userService.getUser(this.id)
           .subscribe(
             (res) => {
-              console.log(res);
               this.setUserForm(res);
             }
           );
@@ -77,8 +78,14 @@ export class UserEditComponent implements OnInit {
 
   save(userForm) {
     
-    this.userService.editUser(this.userForm.value, this.id).subscribe((res) => {
-      console.log(res);
-    });
+    this.userService.editUser(this.userForm.value, this.id)
+      .subscribe(
+        (res) => {
+          this.ngxNotifierService.createToast("Usuario editado exitosamente", "success", 5000);
+            setTimeout(() => {
+              this.router.navigate(['/user/list']);
+            }, 3000);
+        },
+      );
   }
 }
