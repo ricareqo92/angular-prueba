@@ -28,13 +28,14 @@ export class UserCreateComponent implements OnInit {
 
   ngOnInit() {
     this.userForm = this.fb.group({
-      name: ['', [Validators.required, Validators.pattern('^[A-Za-z]+$')]],
+      name: ['', [Validators.required, Validators.minLength(2), Validators.pattern('^[A-Za-z ]+$')]],
       ci: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
       birthday: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required]],
       organization: ['', [Validators.required]],
     });
+    //Obtener organizaciones
     this.getOrganizations();
   }
 
@@ -44,27 +45,22 @@ export class UserCreateComponent implements OnInit {
         (res) => {
           this.organizations = res;
         },
-        (err) => {
-          console.log(err);
-        }
+        (err) => {}
       );
-  }
-
-  get name() {
-    return this.userForm.get(name)
   }
 
   reset() {
     this.userForm.reset();
   }
 
-  save(userForm) {    
+  save(userForm) { 
+    //Guardar el usuario   
     this.userService.createUser(this.userForm.value)
       .subscribe(
         (res) => {
           this.ngxNotifierService.createToast("Usuario creado exitosamente", "success", 5000);
           setTimeout(() => {
-            this.router.navigate(['/user/list']);
+            this.router.navigate(['/usuario/lista']);
           }, 3000);
         },
       );

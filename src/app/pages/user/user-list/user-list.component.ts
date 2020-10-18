@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user/user.service';
 import { Router } from '@angular/router';
+import { OrganizationService } from 'src/app/services/organization/organization.service';
+import { User } from 'src/app/models/user/user';
 
 @Component({
   selector: 'app-user-list',
@@ -15,10 +17,11 @@ export class UserListComponent implements OnInit {
   public name: any;
   public total: number;
   public currentPage: number;
-  public user: any;
+  public user: User;
 
   constructor(
     private userService: UserService,
+    private orgService: OrganizationService,
     private router: Router
   ) {
     this.users = [];
@@ -26,12 +29,7 @@ export class UserListComponent implements OnInit {
 
   ngOnInit() {
     this.getUsers();
-    this.total = 15;
-    this.currentPage = 1;
-    this.user = {
-      id: 1,
-      name: 'Bet'
-    }
+    this.user = new User(0, '', '', '', '', '', 0);
   }
 
   getUsers() {
@@ -39,24 +37,32 @@ export class UserListComponent implements OnInit {
       .subscribe(
         (res) => {
           this.users = res;
-          this.total = this.users.lenght;     
+          this.total = this.users.lenght;
+          this.getOrganizations();   
         },
         (err) => {}
       );
   }
 
+  getOrganizations() {
+    this.orgService.getOrganization()
+      .subscribe(
+        (res) => {
+          let organizations = res;
+          this.users = this.users.map((user) => {
+            let el = organizations.find((item) => item.id == parseInt(user.organization));
+            user.organization = el.name;
+            return user;
+          });          
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  }
+
   active(user) {
     this.user = user;
-  }
-
-  redirecTo(userId) {
-    this.router.navigate(['/user/edit', userId]);
-  }
-
-  activeModal(id: number, name: string): void {
-    this.showModal = true;
-    this.id = id;
-    this.name = name;
   }
 
   pageChanged(p: number) {
@@ -67,14 +73,8 @@ export class UserListComponent implements OnInit {
     this.userService.deleteUser(id)
       .subscribe(
         (res) => {
-          console.log(res);
           this.users = this.users.filter((item) => item.id !== id )
         }
       )
   }
-
-  close() {
-    this.showModal = false;
-  }
-
 }

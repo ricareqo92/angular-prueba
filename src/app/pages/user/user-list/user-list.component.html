@@ -1,17 +1,20 @@
-<h3 class="text-primary mt-5">Listado de Usuarios</h3>
+<h3 class="text-dark mt-5">Listado de Usuarios</h3>
 <div class="row">
-    <div class="col-md-3 offset-md-10 mb-3">
-        <button [routerLink]="['/crear']" class="btn btn-primary"><i class="fa fa-plus mr-2"></i>Crear</button>
+    <div class="col-md-2 offset-md-10 mb-3">
+        <button [routerLink]="['/usuario/crear']" class="btn btn-primary button-shadow"><i class="fa fa-plus mr-2"></i>Crear Usuario</button>
     </div>
 </div>
 <table class="table table-hover table-striped bg-white">
     <thead>
         <tr class="bg-primary text-white">
             <th>ID</th>
-            <th class="text-center">Nombre</th>
-            <th class="text-center">Correo</th>
-            <th class="text-center">Teléfono</th>
-            <th class="text-center">Opciones</th>
+            <th class="text-left">Nombre</th>
+            <th class="text-left">Cédula</th>
+            <th class="text-left">Correo</th>
+            <th class="text-left">Organización</th>
+            <th class="text-left">Teléfono</th>
+            <th class="text-left">Fecha de Nacimiento</th>
+            <th class="text-left">Opciones</th>
         </tr>
     </thead>
     <tbody>
@@ -19,18 +22,27 @@
             <td>
                 #{{user.id}}
             </td>
-            <td class="text-center">
+            <td>
                 {{user.name}}
             </td>
-            <td class="text-center">
+            <td>
+                {{user.ci}}
+            </td>
+            <td>
                 {{user.email}}
             </td>
-            <td class="text-center">
+            <td>
+                {{user.organization}}
+            </td>
+            <td>
                 {{user.phone}}
             </td>
             <td>
-                <button [routerLink]="['/user/edit/', user.id]" class="btn btn-sm btn-success mr-1"><i class="fa fa-edit mr-2"></i>Editar </button>
-                <button type="button" (click)="active(user)" class="btn btn-sm btn-danger mr-1" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-trash mr-2"></i>Borrar</button>           
+                {{user.birthday}}
+            </td>
+            <td>
+                <a [routerLink]="['/usuario/editar', user.id]" class="badge badge-success pt-2 pb-2 mr-1"><i class="fa fa-edit mr-1"></i>Editar </a>
+                <a type="button" (click)="active(user)" class="badge badge-danger pt-2 pb-2 cursor mr-1 text-white" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-trash mr-1"></i>Borrar</a>           
             </td>
         </tr>
     </tbody>

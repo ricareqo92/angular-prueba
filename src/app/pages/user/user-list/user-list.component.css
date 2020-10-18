@@ -1,4 +1,15 @@
 .my-pagination /deep/ .ngx-pagination {
-    margin-left: 50%;
+    margin-left: 70%;
 }
-  
+
+.table {
+    box-shadow: 5px 6px 16px 0px #c4c2c4;
+}
+
+.button-shadow {
+    box-shadow: 5px 6px 16px 0px #c4c2c4;
+}
+
+.cursor {
+    cursor: pointer;
+}

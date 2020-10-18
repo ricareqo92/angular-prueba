@@ -12,19 +12,19 @@ const routes: Routes = [{
   children: [
     {
       path: '',
-      redirectTo: 'create',
+      redirectTo: 'usuario/lista',
       pathMatch: 'full'
     },
     {
-    path: 'create',
+    path: 'usuario/crear',
     component: UserCreateComponent
   },
   {
-    path: 'edit/:id',
+    path: 'usuario/editar/:id',
     component: UserEditComponent
   },
   {
-    path: 'list',
+    path: 'usuario/lista',
     component: UserListComponent
   }]
 },

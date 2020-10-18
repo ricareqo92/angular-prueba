@@ -4,18 +4,12 @@ import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 
-const routes: Routes = [{
-    path: 'login', component: LoginComponent,
-  },
+const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent,
-    children: [{
-      path: 'user',
-      loadChildren: './pages/user/user.module#UserModule',
-    }]
+    loadChildren: './pages/dashboard/dashboard.module#DashboardModule',
   },
-  {  path: '**', redirectTo: 'user' },
+  {  path: '**', redirectTo: 'usuario' },
 ];
 
 @NgModule({

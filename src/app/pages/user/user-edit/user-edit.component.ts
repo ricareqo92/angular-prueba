@@ -30,14 +30,16 @@ export class UserEditComponent implements OnInit {
 
   ngOnInit() {
     this.userForm = this.fb.group({
-      name: ['', [Validators.required]],
-      ci: ['', Validators.required],
+      name: ['', [Validators.required, Validators.minLength(2), Validators.pattern('^[A-Za-z ]+$')]],
+      ci: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
       birthday: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required]],
       organization: ['', [Validators.required]],
     });
+    //Obtener usuario a editar
     this.getUser();
+    //Obtener organizaciones
     this.getOrganizations();
   }
 
@@ -80,13 +82,14 @@ export class UserEditComponent implements OnInit {
     this.userForm.reset();
   }
 
-  save(userForm) {    
+  save(userForm) {
+    //Guardar datos del usuario actualizados
     this.userService.editUser(this.userForm.value, this.id)
       .subscribe(
         (res) => {
           this.ngxNotifierService.createToast("Usuario editado exitosamente", "success", 15000);
             setTimeout(() => {
-              this.router.navigate(['/user/list']);
+              this.router.navigate(['/usuario/lista']);
             }, 3000);
         },
       );
