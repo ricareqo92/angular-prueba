@@ -11,6 +11,7 @@ export class UserFormComponent implements OnInit {
   @Input('userForm') userForm: FormGroup;
   @Input('organizations') organizations: FormGroup;
   @Output() handleEvent: EventEmitter<any> = new EventEmitter();
+  @Output() handleEventReset: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
@@ -19,6 +20,12 @@ export class UserFormComponent implements OnInit {
 
   emitEvent(userForm) {
     this.handleEvent.emit(userForm);
+  }
+
+  reset() {
+    console.log("reset");
+    
+    this.handleEventReset.emit();
   }
 
 }

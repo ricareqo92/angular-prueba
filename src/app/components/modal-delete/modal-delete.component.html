@@ -1,17 +1,20 @@
-<div class="modal-dialog" role="document" style="margin-top:-25%; margin-left: 22%">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Eliminar</h5>
-        <button type="button" class="close" (click)="closeModal()" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>¿Está seguro de eliminar el</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" (click)="delete()">Eliminar</button>
-        <button type="button" class="btn btn-secondary" (click)="closeModal()">Cerrar</button>
-      </div>
+
+
+  <div id="exampleModal" class="modal fade" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Borrar Usuario</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p>{{'¿Estas seguro de querer borrar al usuario ' + user.name + '?'}}</p>
+        </div>
+        <div class="modal-footer">
+            <a class="btn btn-danger" type="button" data-dismiss="modal" (click)="delete()">Borrar</a>&nbsp; 
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        </div>
     </div>
-  </div>
+</div>

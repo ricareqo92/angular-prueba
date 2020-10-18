@@ -7,8 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ModalDeleteComponent implements OnInit {
 
-  @Input() name;
-  @Input() type;
+  @Input() user;
   @Output() remove: EventEmitter<any> = new EventEmitter();
   @Output() close: EventEmitter<any> = new EventEmitter();
   public showModal: boolean;
@@ -22,7 +21,7 @@ export class ModalDeleteComponent implements OnInit {
   }
 
   delete() {
-    this.remove.emit();
+    this.remove.emit(this.user.id);
   }
 
   closeModal() {

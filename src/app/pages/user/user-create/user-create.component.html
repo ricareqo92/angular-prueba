@@ -3,50 +3,8 @@
     <app-user-form
         [userForm]="userForm"
         (handleEvent)="save($event)"
+        (handleEventReset)="reset()"
         [organizations]="organizations"
     ></app-user-form>
     <app-ngx-notifier></app-ngx-notifier>
-
-    <!--<form [formGroup]="userForm" action="">
-        <div class="form-group">
-            <input type="text" placeholder="Nombre Completo" class="form-control" [ngClass]="{'is-valid': userForm.get('name').valid}" formControlName="name">
-            <span *ngIf="userForm.get('name').invalid && (userForm.get('name').dirty || userForm.get('name').touched)" class="error-msg">
-                El nombre es obligatorio
-            </span>
-        </div>
-        <div class="form-group">
-            <input type="text" placeholder="Cédula" class="form-control" formControlName="ci">
-            <span *ngIf="userForm.get('ci').invalid && (userForm.get('ci').dirty || userForm.get('ci').touched)" class="error-msg">
-                El nombre es obligatorio
-            </span>
-        </div>
-        <div class="form-group">
-            <input type="date" placeholder="Fecha de nacimiento" class="form-control" formControlName="birthday">
-            <span *ngIf="userForm.get('birthday').invalid && (userForm.get('birthday').dirty || userForm.get('birthday').touched)" class="error-msg">
-                El nombre es obligatorio
-            </span>
-        </div>
-        <div class="form-group">
-            <input type="email" placeholder="Correo" class="form-control" formControlName="email">
-            <span *ngIf="userForm.get('email').invalid && (userForm.get('email').dirty || userForm.get('email').touched)" class="error-msg">
-                El nombre es obligatorio
-            </span>
-        </div>
-        <div class="form-group">
-            <input type="text" placeholder="Teléfono" class="form-control" formControlName="phone">
-            <span *ngIf="userForm.get('phone').invalid && (userForm.get('phone').dirty || userForm.get('phone').touched)" class="error-msg">
-                El nombre es obligatorio
-            </span>
-        </div>
-        <div class="form-group">
-            <select class="form-control" formControlName="organization">
-                <option *ngFor="let organization of organizations" [value]="organization.id">{{organization.name}}</option>
-            </select>
-            <span *ngIf="userForm.get('organization').invalid && (userForm.get('organization').dirty || userForm.get('organization').touched)" class="error-msg">
-                El nombre es obligatorio
-            </span>
-        </div>
-        <button type="button" (click)="save()" class="btn btn-primary mr-3" [disabled]="!userForm.valid">Guardar</button>
-        <button [routerLink]="['/list']" class="btn btn-secondary">Regresar</button>
-    </form>-->
 </div>

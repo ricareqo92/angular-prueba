@@ -13,6 +13,9 @@ export class UserListComponent implements OnInit {
   public showModal: any;
   public id: any;
   public name: any;
+  public total: number;
+  public currentPage: number;
+  public user: any;
 
   constructor(
     private userService: UserService,
@@ -23,19 +26,27 @@ export class UserListComponent implements OnInit {
 
   ngOnInit() {
     this.getUsers();
+    this.total = 15;
+    this.currentPage = 1;
+    this.user = {
+      id: 1,
+      name: 'Bet'
+    }
   }
 
   getUsers() {
     this.userService.getUsers()
       .subscribe(
         (res) => {
-          this.users = res;          
+          this.users = res;
+          this.total = this.users.lenght;     
         },
-        (err) => {
-          console.log(err);
-          
-        }
+        (err) => {}
       );
+  }
+
+  active(user) {
+    this.user = user;
   }
 
   redirecTo(userId) {
@@ -48,11 +59,16 @@ export class UserListComponent implements OnInit {
     this.name = name;
   }
 
-  remove() {
-    this.userService.deleteUser(this.id)
+  pageChanged(p: number) {
+    this.currentPage = p;
+  }
+
+  remove(id: number) {
+    this.userService.deleteUser(id)
       .subscribe(
         (res) => {
           console.log(res);
+          this.users = this.users.filter((item) => item.id !== id )
         }
       )
   }
@@ -60,6 +76,5 @@ export class UserListComponent implements OnInit {
   close() {
     this.showModal = false;
   }
-
 
 }

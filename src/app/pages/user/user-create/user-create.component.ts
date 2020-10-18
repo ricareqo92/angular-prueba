@@ -28,8 +28,8 @@ export class UserCreateComponent implements OnInit {
 
   ngOnInit() {
     this.userForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(2), Validators.pattern('/^[A-Za-z _]*[A-Za-z][A-Za-z _]*$/')]],
-      ci: ['', Validators.required, Validators.pattern('/^[0-9]\d*$/')],
+      name: ['', [Validators.required, Validators.pattern('^[A-Za-z]+$')]],
+      ci: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
       birthday: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required]],
@@ -52,6 +52,10 @@ export class UserCreateComponent implements OnInit {
 
   get name() {
     return this.userForm.get(name)
+  }
+
+  reset() {
+    this.userForm.reset();
   }
 
   save(userForm) {    

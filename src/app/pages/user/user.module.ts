@@ -5,6 +5,7 @@ import {
   NgxNotifierModule,
   NgxNotifierService
 } from 'ngx-notifier';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 import { UserRoutingModule } from './user-routing.module';
 
@@ -35,6 +36,8 @@ import { ModalDeleteComponent } from 'src/app/components/modal-delete/modal-dele
     UserRoutingModule,
     ReactiveFormsModule,
     NgxNotifierModule,
+    NgxPaginationModule,
+
   ],
   providers: [
     NgxNotifierService
