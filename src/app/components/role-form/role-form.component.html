@@ -1,0 +1,18 @@
+<form [formGroup]="roleForm" (ngSubmit)="submit()"  action="">
+    <div class="form-group">
+        <label for="name">Nombre</label>
+        <input type="text" placeholder="Ingrese el nombre" class="form-control" [ngClass]="{'is-valid': roleForm.get('name').valid, 'form-control': true}" formControlName="name" id="name">
+        <small *ngIf="name.hasError('required') && (name.dirty || name.touched)" class="invalid-feedback d-block">El campo es obligatorio</small>
+        <small *ngIf="name.hasError('minlength') && name.dirty" class="invalid-feedback d-block">El nombre debe contener al menos dos letras</small>
+    </div>
+    <div class="form-group">
+        <label for="description">Descripción</label>
+        <input type="text" placeholder="Ingrese la descripción" class="form-control" formControlName="description" id="description">
+        <small *ngIf="description.hasError('required') && (description.dirty || description.touched)" class="feedback-invalid d-block">El campo es obligatorio</small>
+    </div>
+    <div class="form-group text-right">
+        <button [routerLink]="['/roles/lista']" class="btn btn-secondary mr-2">Regresar</button>
+        <button type="button" (click)="roleForm.reset()" class="btn btn-primary mr-2">Limpiar</button>
+        <button type="submit" class="btn btn-success">Guardar</button>
+    </div>
+</form>

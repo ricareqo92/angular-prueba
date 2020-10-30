@@ -4,6 +4,7 @@ import { UserService } from 'src/app/services/user/user.service';
 import { OrganizationService } from 'src/app/services/organization/organization.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgxNotifierService } from 'ngx-notifier';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-user-edit',
@@ -24,6 +25,8 @@ export class UserEditComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private ngxNotifierService: NgxNotifierService,
+    private spinner: NgxSpinnerService,
+
   ) {
     this.title = 'Editar Usuario';
   }
@@ -77,20 +80,23 @@ export class UserEditComponent implements OnInit {
         }
       );
   }
-
-  reset() {
-    this.userForm.reset();
-  }
-
+  
   save(userForm) {
     //Guardar datos del usuario actualizados
     this.userService.editUser(this.userForm.value, this.id)
       .subscribe(
         (res) => {
-          this.ngxNotifierService.createToast("Usuario editado exitosamente", "success", 15000);
-            setTimeout(() => {
-              this.router.navigate(['/usuario/lista']);
-            }, 3000);
+          //Generar notificación
+          this.ngxNotifierService.createToast("Usuario editado exitosamente", "success", 5000);
+          setTimeout(() => {
+            //Genear spinner
+            this.spinner.show();
+              setTimeout(() => {
+                this.spinner.hide();
+                //Ir a la lista de usuarios
+                this.router.navigate(['/usuario/lista']);
+              }, 2000);
+          }, 2000);
         },
       );
   }

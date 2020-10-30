@@ -3,8 +3,8 @@
     <app-user-form
         [userForm]="userForm"
         (handleEvent)="save($event)"
-        (handleEventReset)="reset()"
         [organizations]="organizations"
     ></app-user-form>
     <app-ngx-notifier></app-ngx-notifier>
+    <ngx-spinner></ngx-spinner>
 </div>

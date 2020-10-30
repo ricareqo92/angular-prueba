@@ -7,9 +7,12 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: './pages/dashboard/dashboard.module#DashboardModule',
+    loadChildren: () => import('./pages/dashboard/dashboard.module').then(e => e.DashboardModule)
   },
-  {  path: '**', redirectTo: 'usuario' },
+  {
+    path: '**',
+    redirectTo: '',
+  }
 ];
 
 @NgModule({

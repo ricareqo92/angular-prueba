@@ -25,11 +25,13 @@ export class UserListComponent implements OnInit {
     private router: Router
   ) {
     this.users = [];
+    this.user = new User(0, '', '', '', '', '', 0);
   }
 
   ngOnInit() {
     this.getUsers();
-    this.user = new User(0, '', '', '', '', '', 0);
+    console.log(this.user);
+    
   }
 
   getUsers() {

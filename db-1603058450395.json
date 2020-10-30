@@ -1,0 +1,21 @@
+{
+  "users": [],
+  "organizations": [
+    {
+      "id": 1,
+      "name": "Organización 1"
+    },
+    {
+      "id": 2,
+      "name": "Organización 2"
+    },
+    {
+      "id": 3,
+      "name": "Organización 3"
+    },
+    {
+      "id": 4,
+      "name": "Organización 4"
+    }
+  ]
+}

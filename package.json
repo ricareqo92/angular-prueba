@@ -24,6 +24,7 @@
     "ngx-modal": "0.0.29",
     "ngx-notifier": "^2.0.2",
     "ngx-pagination": "^3.2.1",
+    "ngx-spinner": "^10.0.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

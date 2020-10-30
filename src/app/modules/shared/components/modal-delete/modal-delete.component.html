@@ -1,0 +1,18 @@
+<div id="exampleModal" class="modal fade" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Borrar {{title | upperCaseOne}}</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p>{{'¿Estas seguro de querer borrar al '}} {{title}} {{object.name}}?</p>
+        </div>
+        <div class="modal-footer">
+            <a class="btn btn-danger" type="button" data-dismiss="modal" (click)="delete()">Borrar</a>&nbsp; 
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+</div>

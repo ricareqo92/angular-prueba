@@ -1,10 +1,12 @@
 <div class="container-form bg-white mt-5 rounded-top border border-primary border-top-3 border-bottom-0 border-left-0 border-right-0">
-    <app-title [title]='title'></app-title>
-    <app-user-form
-        [userForm]="userForm"
-        (handleEvent)="save($event)"
-        [organizations]="organizations"
-    ></app-user-form>
+    <app-title
+        [title]="title"
+    ></app-title>
+    <app-role-form
+        [roleForm]="roleForm"
+        (handleEvent)="submit($event)"
+    >
+    </app-role-form>
     <app-ngx-notifier></app-ngx-notifier>
     <ngx-spinner></ngx-spinner>
 </div>

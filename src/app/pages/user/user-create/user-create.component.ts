@@ -4,6 +4,7 @@ import { UserService } from 'src/app/services/user/user.service';
 import { OrganizationService } from 'src/app/services/organization/organization.service';
 import { NgxNotifierService } from 'ngx-notifier';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-user-create',
@@ -22,6 +23,7 @@ export class UserCreateComponent implements OnInit {
     private orgService: OrganizationService,
     private router: Router,
     private ngxNotifierService: NgxNotifierService,
+    private spinner: NgxSpinnerService,
   ) {
     this.title = 'Crear Usuario';
   }
@@ -49,19 +51,22 @@ export class UserCreateComponent implements OnInit {
       );
   }
 
-  reset() {
-    this.userForm.reset();
-  }
-
   save(userForm) { 
     //Guardar el usuario   
     this.userService.createUser(this.userForm.value)
       .subscribe(
         (res) => {
+          //Generar notificación
           this.ngxNotifierService.createToast("Usuario creado exitosamente", "success", 5000);
           setTimeout(() => {
-            this.router.navigate(['/usuario/lista']);
-          }, 3000);
+            //Genear spinner
+            this.spinner.show();
+              setTimeout(() => {
+                this.spinner.hide();
+                //Ir a la lista de usuarios
+                this.router.navigate(['/usuario/lista']);
+              }, 2000);
+          }, 2000);
         },
       );
   }
